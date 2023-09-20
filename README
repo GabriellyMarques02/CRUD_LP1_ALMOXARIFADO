@@ -1,11 +1,11 @@
-##Projeto proposto pelo professor Derzu Omaia na disciplina de Linguagem de Programação I - Período: 2023.1
+## Projeto proposto pelo professor Derzu Omaia na disciplina de Linguagem de Programação I - Período: 2023.1 
 
-#Especificações do projeto:
+# Especificações do projeto:
 
 O tema do projeto é Almoxarifado, um CRUD onde as entradas ficaram salvas em um arquivo de texto e toda vez que o usuário fazer uma busca,
 será possível acessar entradas passadas.
 
-#Requisitos do projeto:
+# Requisitos do projeto:#
 
 1. Ser feito em C++
 
@@ -49,7 +49,7 @@ vetor de objetos, e não diretamente no arquivo.
 
 
 
-#Referências:
+# Referências:
 
     Documentação oferecida pelo professor
     https://github.com/heltonricardo/crud-cpp
