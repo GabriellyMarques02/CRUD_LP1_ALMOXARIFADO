@@ -7,6 +7,7 @@
 // Função para adicionar um produto ao estoque
 void Estoque::adicionarProduto(const Produto& produto) {
     produtos.push_back(produto);
+    salvarParaArquivo("estoque.csv"); // Salva o estoque no arquivo após adicionar um produto
 }
 
 // Função para listar todos os produtos no estoque
@@ -72,44 +73,41 @@ bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
     std::ifstream arquivo(nomeArquivo);
 
     if (!arquivo.is_open()) {
-        std::cerr << "O arquivo não existe ou não pode ser aberto. Um novo arquivo será criado." << std::endl;
-        
-        // Crie um novo arquivo
-        std::ofstream novoArquivo(nomeArquivo);
-        if (!novoArquivo.is_open()) {
-            std::cerr << "Erro ao criar o novo arquivo." << std::endl;
-            return false;
-        }
-        novoArquivo.close();
-    } else {
-        produtos.clear(); // Limpa os produtos existentes
+        // O arquivo não existe, não é um erro, apenas não há dados para carregar.
+        return false;
+    }
 
-        std::string linha;
-        bool dadosLidos = false;
+    //produtos.clear(); // Limpa os produtos existentes
 
-        while (std::getline(arquivo, linha)) {
-            std::istringstream ss(linha);
-            int id;
-            std::string nome;
-            double preco;
+    std::string linha;
+    bool dadosLidos = false;
 
-            if (ss >> id >> nome >> preco) {
-                Produto produto(id, nome, preco);
-                produtos.push_back(produto);
-                dadosLidos = true;
-            }
-        }
+    while (std::getline(arquivo, linha)) {
+        std::istringstream ss(linha);
+        int id;
+        std::string nome;
+        double preco;
 
-        arquivo.close();
-
-        if (!dadosLidos) {
-            std::cerr << "Nenhum dado válido encontrado no arquivo." << std::endl;
-            return false;
+        if (ss >> id >> nome >> preco) {
+            std:: cout << id << std::endl;
+            std:: cout << nome << std:: endl;
+            std:: cout << preco << std::endl;
+            Produto produto(id, nome, preco);
+            produtos.push_back(produto);
+            dadosLidos = true;
         }
     }
 
+    //arquivo.close();
+
+    /*if (!dadosLidos) {
+        std::cerr << "Nenhum dado válido encontrado no arquivo." << std::endl;
+        return false;
+    }*/
+
     return true;
 }
+
 
 
 
@@ -125,8 +123,11 @@ bool Estoque::salvarParaArquivo(const std::string& nomeArquivo) const {
         arquivo << produto.getId() << "," << produto.getNome() << "," << produto.getPreco() << "\n";
     }
 
-    arquivo.close();
+    //arquivo.close();
     return true;
 }
+
+
+
 
 

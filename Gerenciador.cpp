@@ -79,6 +79,12 @@ void Gerenciador::exibirRelatorioEstoque(const Estoque& estoque) {
 void Gerenciador::executar() {
     Estoque estoque; // Cria um objeto Estoque
 
+    // Carrega os dados do arquivo no início do programa
+    if (!estoque.carregarDeArquivo("estoque.csv")) {
+        std::cerr << "Falha ao carregar dados do arquivo." << std::endl;
+        return;
+    }
+
     while (true) {
         std::cout << "\nMenu:\n";
         std::cout << "1. Adicionar Produto\n";
@@ -115,6 +121,12 @@ void Gerenciador::executar() {
             default:
                 std::cout << "Opcao invalida!" << std::endl;
         }
+    }
+
+    // Salva os dados no arquivo ao finalizar o programa
+    if (!estoque.salvarParaArquivo("estoque.csv")) {
+        std::cerr << "Falha ao salvar dados no arquivo." << std::endl;
+        return;
     }
 }
 
