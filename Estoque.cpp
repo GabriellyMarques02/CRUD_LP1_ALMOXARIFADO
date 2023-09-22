@@ -74,9 +74,12 @@ bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
     std::ifstream arquivo;
     arquivo.open(nomeArquivo);
 
+    std::cout << "Entra no CarregarDeArquivo"<< std:: endl;
+
     // Verifica se o arquivo está aberto corretamente
     if (!arquivo.is_open()) {
         // O arquivo não existe, não é um erro, apenas não há dados para carregar.
+         std::cout << "Entra no teste de CarregarDeArquivo"<< std:: endl;
         return false;
     }
 
@@ -105,15 +108,16 @@ bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
             dadosLidos = true;
         }
     }
+     std::cout << "Saindo do while no CarregarDeArquivo"<< std:: endl;
 
-    /*// Fecha o arquivo após a leitura
+    // Fecha o arquivo após a leitura
     arquivo.close();
 
     if (!dadosLidos) {
         std::cerr << "Nenhum dado válido encontrado no arquivo." << std::endl;
         return false;
     }
-    */
+    
     return true;
 }
 
@@ -132,7 +136,7 @@ bool Estoque::salvarParaArquivo(const std::string& nomeArquivo) const {
         arquivo << produto.getId() << "," << produto.getNome() << "," << produto.getPreco() << "\n";
     }
 
-    //arquivo.close();
+    arquivo.close();
     return true;
 }
 
