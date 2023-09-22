@@ -27,7 +27,7 @@ double Gerenciador::lerDouble(const std::string& mensagem) const {
 void Gerenciador::adicionarProduto(Estoque& estoque) {
     int id = lerInteiro("Digite o ID do produto: ");
     std::string nome = lerString("Digite o nome do produto: ");
-    double preco = lerDouble("Digite o preço do produto: ");
+    double preco = lerDouble("Digite o preco do produto: ");
 
     Produto novoProduto(id, nome, preco);
     estoque.adicionarProduto(novoProduto);
@@ -72,8 +72,8 @@ void Gerenciador::removerProduto(Estoque& estoque) {
 }
 
 void Gerenciador::exibirRelatorioEstoque(const Estoque& estoque) {
-    std::cout << "Relatório do Estoque:" << std::endl;
-    estoque.listarProdutos();
+    //std::cout << "Relatorio do Estoque:" << std::endl;
+    estoque.exibirRelatorio();
 }
 
 void Gerenciador::executar() {
@@ -117,9 +117,13 @@ void Gerenciador::executar() {
                 break;
             case 7:
                 std::cout << "Saindo do programa..." << std::endl;
-                return;
+                break;
             default:
                 std::cout << "Opcao invalida!" << std::endl;
+
+        }
+        if(opcao ==7){
+            break;
         }
     }
 

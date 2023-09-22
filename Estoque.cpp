@@ -7,14 +7,14 @@
 // Função para adicionar um produto ao estoque
 void Estoque::adicionarProduto(const Produto& produto) {
     produtos.push_back(produto);
-    salvarParaArquivo("estoque.csv"); // Salva o estoque no arquivo após adicionar um produto
+    //salvarParaArquivo("estoque.csv"); // Salva o estoque no arquivo após adicionar um produto
 }
 
 // Função para listar todos os produtos no estoque
 void Estoque::listarProdutos() const {
-    std::cout << "Produtos no estoque:" << std::endl;
+    std::cout << "Produtos no estoque:" << produtos.size() << std::endl;
     for (const auto& produto : produtos) {
-        std::cout << "ID: " << produto.getId() << ", Nome: " << produto.getNome() << ", Preço: " << produto.getPreco() << std::endl;
+        std::cout << "ID: " << produto.getId() << ", Nome: " << produto.getNome() << ", Preco: " << produto.getPreco() << std::endl;
     }
 }
 
@@ -37,7 +37,7 @@ void Estoque::alterarProduto(const std::string& nome, const Produto& novoProduto
             return;
         }
     }
-    std::cout << "Produto não encontrado." << std::endl;
+    std::cout << "Produto nao encontrado." << std::endl;
 }
 
 // Função para remover um produto por nome
@@ -50,7 +50,7 @@ void Estoque::removerProduto(const std::string& nome) {
         produtos.erase(it, produtos.end());
         std::cout << "Produto removido com sucesso!" << std::endl;
     } else {
-        std::cout << "Produto não encontrado." << std::endl;
+        std::cout << "Produto nao encontrado." << std::endl;
     }
 }
 
@@ -63,52 +63,59 @@ void Estoque::exibirRelatorio() const {
         valorTotal += produto.getPreco();
     }
 
-    std::cout << "Relatório do Estoque:" << std::endl;
+    std::cout << "Relatorio do Estoque:" << std::endl;
     std::cout << "Total de Produtos: " << totalProdutos << std::endl;
     std::cout << "Valor Total: R$" << valorTotal << std::endl;
 }
 
-//Criando o arquivo, caso não tenham
-bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
-    std::ifstream arquivo(nomeArquivo);
 
+bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
+    // Abre o arquivo para leitura
+    std::ifstream arquivo;
+    arquivo.open(nomeArquivo);
+
+    // Verifica se o arquivo está aberto corretamente
     if (!arquivo.is_open()) {
         // O arquivo não existe, não é um erro, apenas não há dados para carregar.
         return false;
     }
 
-    //produtos.clear(); // Limpa os produtos existentes
+    std::cout << "Carregando dados do arquivo..." << std::endl;
 
     std::string linha;
     bool dadosLidos = false;
 
+    // Loop para ler cada linha do arquivo
     while (std::getline(arquivo, linha)) {
+        // Prepara um fluxo de string para analisar a linha
         std::istringstream ss(linha);
         int id;
         std::string nome;
         double preco;
 
+        // Tenta extrair os dados da linha
         if (ss >> id >> nome >> preco) {
-            std:: cout << id << std::endl;
-            std:: cout << nome << std:: endl;
-            std:: cout << preco << std::endl;
+            std::cout << "Lendo: " << linha << std::endl;
+            
+            // Cria um objeto Produto com os dados lidos
             Produto produto(id, nome, preco);
+            
+            // Adiciona o produto à lista de produtos
             produtos.push_back(produto);
             dadosLidos = true;
         }
     }
 
-    //arquivo.close();
+    /*// Fecha o arquivo após a leitura
+    arquivo.close();
 
-    /*if (!dadosLidos) {
+    if (!dadosLidos) {
         std::cerr << "Nenhum dado válido encontrado no arquivo." << std::endl;
         return false;
-    }*/
-
+    }
+    */
     return true;
 }
-
-
 
 
 // Implementação das funções para salvar dados de um arquivo
@@ -119,6 +126,8 @@ bool Estoque::salvarParaArquivo(const std::string& nomeArquivo) const {
         return false;
     }
 
+    std::cout << "Salvando...."<< std::endl;
+    
     for (const auto& produto : produtos) {
         arquivo << produto.getId() << "," << produto.getNome() << "," << produto.getPreco() << "\n";
     }

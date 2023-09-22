@@ -13,5 +13,5 @@ const std::string& Produto::getNome() const {
 
 double Produto::getPreco() const {
     return preco;
-}
+} 
 
