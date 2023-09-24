@@ -8,7 +8,7 @@
 class Estoque {
 public:
     Estoque();
-   void Estoque::adicionarProduto(const Produto& produto);
+    void adicionarProduto(const Produto& produto);
     void listarProdutos() const;
     Produto* pesquisarProduto(const std::string& nome);
     void alterarProduto(const std::string& nome, Produto& novoProduto);

@@ -29,6 +29,8 @@ void Gerenciador::adicionarProduto(Estoque& estoque) {
     std::string nome = lerString("Digite o nome do produto: ");
     double preco = lerDouble("Digite o preco do produto: ");
 
+  
+
     Produto novoProduto(id, nome, preco);
     estoque.adicionarProduto(novoProduto);
     std::cout << "Produto adicionado com sucesso!" << std::endl;
@@ -77,18 +79,13 @@ void Gerenciador::removerProduto(Estoque& estoque) {
 }
 
 void Gerenciador::exibirRelatorioEstoque(const Estoque& estoque) {
-    //std::cout << "Relatorio do Estoque:" << std::endl;
     estoque.exibirRelatorio();
 }
 
 void Gerenciador::executar() {
     Estoque estoque; // Cria um objeto Estoque
 
-    // Carrega os dados do arquivo no início do programa
-    // if (!estoque.carregarDeArquivo("estoque.csv")) {
-    //     std::cerr << "Falha ao carregar dados do arquivo." << std::endl;
-    //     return;
-    // }
+    
 
     while (true) {
         std::cout << "\nMenu:\n";
@@ -132,10 +129,4 @@ void Gerenciador::executar() {
         }
     }
 
-    // Salva os dados no arquivo ao finalizar o programa
-    // if (!estoque.salvarParaArquivo("estoque.csv", true)) {
-    //     std::cerr << "Falha ao salvar dados no arquivo." << std::endl;
-    //     return;
-    // }
 }
-

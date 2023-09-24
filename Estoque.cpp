@@ -8,18 +8,17 @@ Estoque::Estoque() {}
 
 // Função para adicionar um produto ao estoque
 void Estoque::adicionarProduto(const Produto& produto) {
-   
-    produtoSalvar = produto;  
+    //produtoParaSalvar.push_back(produto);
+    produtoSalvar = produto;
+    //salvarParaArquivo("estoque.csv"); // Salva o estoque no arquivo após adicionar um produto
+    //produtos.push_back(produtoParaSalvar.back());
 
-    
-
-    // Salvando no arquivo
+    // Salva os dados no arquivo ao finalizar o programa
     if (!this->salvarParaArquivo("estoque.csv")) {
         std::cerr << "Falha ao salvar dados no arquivo." << std::endl;
         return;
     }
 }
-
 
 
 // Função para listar todos os produtos no estoque
