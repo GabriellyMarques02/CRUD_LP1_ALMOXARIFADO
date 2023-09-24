@@ -48,7 +48,7 @@ Carregar o arquivo automaticamente ao entrar na aplicação. Salvar em arquivo a
 
 
 
-## Diagrama UML
+# Diagrama UML
 
   ![Imagem](https://github.com/GabriellyMarques02/CRUD_LP1_ALMOXARIFADO/blob/main/diagramaclasses.png)
 

@@ -11,6 +11,8 @@ void Estoque::adicionarProduto(const Produto& produto) {
    
     produtoSalvar = produto;  
 
+    
+
     // Salvando no arquivo
     if (!this->salvarParaArquivo("estoque.csv")) {
         std::cerr << "Falha ao salvar dados no arquivo." << std::endl;
