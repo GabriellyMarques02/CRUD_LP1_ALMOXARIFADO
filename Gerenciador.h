@@ -6,8 +6,8 @@
 class Gerenciador {
 public:
     void adicionarProduto(Estoque& estoque);
-    void listarProdutos(const Estoque& estoque);
-    void pesquisarExibirProduto(const Estoque& estoque);
+    void listarProdutos(Estoque& estoque);
+    void pesquisarExibirProduto(Estoque& estoque);
     void alterarProduto(Estoque& estoque);
     void removerProduto(Estoque& estoque);
     void exibirRelatorioEstoque(const Estoque& estoque);

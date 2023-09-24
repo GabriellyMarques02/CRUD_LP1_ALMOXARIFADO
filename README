@@ -5,7 +5,7 @@
 O tema do projeto é Almoxarifado, um CRUD onde as entradas ficaram salvas em um arquivo de texto e toda vez que o usuário fazer uma busca,
 será possível acessar entradas passadas.
 
-# Requisitos do projeto:#
+# Requisitos do projeto:
 
 1. Ser feito em C++
 

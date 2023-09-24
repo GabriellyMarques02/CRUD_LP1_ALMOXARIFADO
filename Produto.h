@@ -5,6 +5,7 @@
 
 class Produto {
 public:
+    Produto();
     Produto(int id, const std::string& nome, double preco);
 
     int getId() const;

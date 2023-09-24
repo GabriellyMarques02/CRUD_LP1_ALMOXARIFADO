@@ -1,5 +1,6 @@
 #include "Produto.h"
 
+Produto::Produto(){}
 Produto::Produto(int id, const std::string& nome, double preco)
     : id(id), nome(nome), preco(preco) {}
 
@@ -14,4 +15,3 @@ const std::string& Produto::getNome() const {
 double Produto::getPreco() const {
     return preco;
 } 
-

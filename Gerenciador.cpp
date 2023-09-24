@@ -34,13 +34,18 @@ void Gerenciador::adicionarProduto(Estoque& estoque) {
     std::cout << "Produto adicionado com sucesso!" << std::endl;
 }
 
-void Gerenciador::listarProdutos(const Estoque& estoque) {
+void Gerenciador::listarProdutos(Estoque& estoque) {
+    if (!estoque.carregarDeArquivo("estoque.csv")) {
+        std::cerr << "Falha ao carregar dados do arquivo." << std::endl;
+        return;
+    }
+
     estoque.listarProdutos();
 }
 
-void Gerenciador::pesquisarExibirProduto(const Estoque& estoque) {
+void Gerenciador::pesquisarExibirProduto(Estoque& estoque) {
     std::string nome = lerString("Digite o nome do produto a ser pesquisado: ");
-    const Produto* produto = estoque.pesquisarProduto(nome);
+    Produto* produto = estoque.pesquisarProduto(nome);
 
     if (produto) {
         std::cout << "Produto encontrado:" << std::endl;
@@ -52,7 +57,7 @@ void Gerenciador::pesquisarExibirProduto(const Estoque& estoque) {
 
 void Gerenciador::alterarProduto(Estoque& estoque) {
     std::string nome = lerString("Digite o nome do produto a ser alterado: ");
-    const Produto* produto = estoque.pesquisarProduto(nome);
+    Produto* produto = estoque.pesquisarProduto(nome);
 
     if (produto) {
         int id = produto->getId();
@@ -80,10 +85,10 @@ void Gerenciador::executar() {
     Estoque estoque; // Cria um objeto Estoque
 
     // Carrega os dados do arquivo no início do programa
-    if (!estoque.carregarDeArquivo("estoque.csv")) {
-        std::cerr << "Falha ao carregar dados do arquivo." << std::endl;
-        return;
-    }
+    // if (!estoque.carregarDeArquivo("estoque.csv")) {
+    //     std::cerr << "Falha ao carregar dados do arquivo." << std::endl;
+    //     return;
+    // }
 
     while (true) {
         std::cout << "\nMenu:\n";
@@ -128,9 +133,9 @@ void Gerenciador::executar() {
     }
 
     // Salva os dados no arquivo ao finalizar o programa
-    if (!estoque.salvarParaArquivo("estoque.csv")) {
-        std::cerr << "Falha ao salvar dados no arquivo." << std::endl;
-        return;
-    }
+    // if (!estoque.salvarParaArquivo("estoque.csv", true)) {
+    //     std::cerr << "Falha ao salvar dados no arquivo." << std::endl;
+    //     return;
+    // }
 }
 
