@@ -8,17 +8,17 @@ Estoque::Estoque() {}
 
 // Função para adicionar um produto ao estoque
 void Estoque::adicionarProduto(const Produto& produto) {
-    //produtoParaSalvar.push_back(produto);
-    produtoSalvar = produto;
-    //salvarParaArquivo("estoque.csv"); // Salva o estoque no arquivo após adicionar um produto
-    //produtos.push_back(produtoParaSalvar.back());
+   
+    produtoSalvar = produto;  
 
-    // Salva os dados no arquivo ao finalizar o programa
+    // Salvando no arquivo
     if (!this->salvarParaArquivo("estoque.csv")) {
         std::cerr << "Falha ao salvar dados no arquivo." << std::endl;
         return;
     }
 }
+
+
 
 // Função para listar todos os produtos no estoque
 void Estoque::listarProdutos() const {
@@ -132,16 +132,16 @@ bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
     std::fstream arquivo;
     arquivo.open(nomeArquivo, std::fstream::in);
 
-    std::cout << "Entra no CarregarDeArquivo"<< std:: endl;
+    //std::cout << "Entra no CarregarDeArquivo"<< std:: endl;
 
     // Verifica se o arquivo está aberto corretamente
     if (!arquivo) {
         // O arquivo não existe, não é um erro, apenas não há dados para carregar.
-         std::cout << "Entra no teste de CarregarDeArquivo"<< std:: endl;
+         //std::cout << "Entra no teste de CarregarDeArquivo"<< std:: endl;
         return false;
     }
 
-    std::cout << "Carregando dados do arquivo..." << std::endl;
+    //std::cout << "Carregando dados do arquivo..." << std::endl;
 
     std::string linha, valorPorVirgula;
     std::vector<std::string> valoresLinhas;
@@ -162,7 +162,7 @@ bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
         produtos.push_back(produto);
 
     }
-     std::cout << "Saindo do while no CarregarDeArquivo"<< std:: endl;
+     //std::cout << "Saindo do while no CarregarDeArquivo"<< std:: endl;
 
     // Fecha o arquivo após a leitura
     arquivo.close();
@@ -200,7 +200,6 @@ bool Estoque::salvarParaArquivo(const std::string& nomeArquivo) const {
     return true;
 }
 
-// Thais por favor não esquecer de colocar o comentario, seja uma boa desenvolvedora e comente por favor.
 bool Estoque::removerAtualizarArquivo(const std::string& nomeArquivo) const {
     std::fstream arquivo;
     arquivo.open(nomeArquivo, std::fstream::out);
