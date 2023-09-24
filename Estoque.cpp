@@ -8,10 +8,10 @@ Estoque::Estoque() {}
 
 // Função para adicionar um produto ao estoque
 void Estoque::adicionarProduto(const Produto& produto) {
-    //produtoParaSalvar.push_back(produto);
+    
     produtoSalvar = produto;
-    //salvarParaArquivo("estoque.csv"); // Salva o estoque no arquivo após adicionar um produto
-    //produtos.push_back(produtoParaSalvar.back());
+
+
 
     // Salva os dados no arquivo ao finalizar o programa
     if (!this->salvarParaArquivo("estoque.csv")) {
@@ -51,18 +51,11 @@ Produto* Estoque::pesquisarProduto(const std::string& nome) {
 // Função para alterar um produto existente
 void Estoque::alterarProduto(const std::string& nome, Produto& novoProduto) {
     
-    // produtos.clear();
-
-    // if (!this->carregarDeArquivo("estoque.csv")) {
-    //     std::cerr << "Falha ao carregar dados do arquivo." << std::endl;
-    //     return;
-    // }
 
     bool isProdutoAtualizado = false;
 
     for (auto& produto : produtos) {
         if (produto.getNome() == nome) {
-            //Produto nvProduto(novoProduto.getId(), novoProduto.getNome(), novoProduto.getPreco());
             produto =  novoProduto;// Atualiza o produto existente com as novas informações
             isProdutoAtualizado = true;
             break;
@@ -133,16 +126,15 @@ bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
     std::fstream arquivo;
     arquivo.open(nomeArquivo, std::fstream::in);
 
-    //std::cout << "Entra no CarregarDeArquivo"<< std:: endl;
+    
 
     // Verifica se o arquivo está aberto corretamente
     if (!arquivo) {
         // O arquivo não existe, não é um erro, apenas não há dados para carregar.
-         //std::cout << "Entra no teste de CarregarDeArquivo"<< std:: endl;
         return false;
     }
 
-    //std::cout << "Carregando dados do arquivo..." << std::endl;
+    
 
     std::string linha, valorPorVirgula;
     std::vector<std::string> valoresLinhas;
@@ -163,7 +155,7 @@ bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
         produtos.push_back(produto);
 
     }
-     //std::cout << "Saindo do while no CarregarDeArquivo"<< std:: endl;
+     
 
     // Fecha o arquivo após a leitura
     arquivo.close();
@@ -181,20 +173,8 @@ bool Estoque::salvarParaArquivo(const std::string& nomeArquivo) const {
         std::cerr << "Erro ao abrir o arquivo para escrita." << std::endl;
         return false;
     }
-//    if (isAdicao) {
-//         for (const auto& produto : produtoParaSalvar) {
-//             arquivo << produto.getId() << "," << produto.getNome() << "," << produto.getPreco() << "\n";
-//         }
-//    }
-    arquivo << produtoSalvar.getId() << "," << produtoSalvar.getNome() << "," << produtoSalvar.getPreco() << "\n";
-//    if (!isAdicao) {
-//         for (const auto& produto : produtos) {
-//             arquivo << produto.getId() << "," << produto.getNome() << "," << produto.getPreco() << "\n";
-//         }
 
-//         remove("estoque.csv");
-//         rename("estoqueAtualizado.csv", "estoque.csv")
-//    }
+    arquivo << produtoSalvar.getId() << "," << produtoSalvar.getNome() << "," << produtoSalvar.getPreco() << "\n";
 
     arquivo.close();
 
@@ -209,22 +189,17 @@ bool Estoque::removerAtualizarArquivo(const std::string& nomeArquivo) const {
         std::cerr << "Erro ao abrir o arquivo para escrita." << std::endl;
         return false;
     }
-//    if (isAdicao) {
+
     for (const auto& produto : produtos) {
         arquivo << produto.getId() << "," << produto.getNome() << "," << produto.getPreco() << "\n";
     }
-//    }
-    //arquivo << produtoSalvar.getId() << "," << produtoSalvar.getNome() << "," << produtoSalvar.getPreco() << "\n";
-//    if (!isAdicao) {
-//         for (const auto& produto : produtos) {
-//             arquivo << produto.getId() << "," << produto.getNome() << "," << produto.getPreco() << "\n";
-//         }
+
 
     arquivo.close();
     
     remove("estoque.csv");
     rename("estoqueAtualizado.csv", "estoque.csv");
-//    }
+
 
 
     return true;

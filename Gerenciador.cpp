@@ -32,6 +32,7 @@ void Gerenciador::adicionarProduto(Estoque& estoque) {
   
 
     Produto novoProduto(id, nome, preco);
+    
     estoque.adicionarProduto(novoProduto);
     std::cout << "Produto adicionado com sucesso!" << std::endl;
 }
