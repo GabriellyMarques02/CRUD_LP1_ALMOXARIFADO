@@ -70,3 +70,7 @@ Carregar o arquivo automaticamente ao entrar na aplicação. Salvar em arquivo a
 	https://augustoprogrammer.files.wordpress.com/2015/03/farmacia_classdiagram.jpg
 
 	https://www.devmedia.com.br/trabalhando-com-os-diagramas-da-uml-parte-2/33224
+
+	https://stackedit.io/app#
+
+	https://pt.stackoverflow.com/editing-help
