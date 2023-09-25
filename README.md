@@ -52,6 +52,10 @@ Carregar o arquivo automaticamente ao entrar na aplicação. Salvar em arquivo a
 
   ![Imagem](https://github.com/GabriellyMarques02/CRUD_LP1_ALMOXARIFADO/blob/main/cruddiagrama.drawio.png)
 
+	Relações:
+	A classe Gerenciador possui um objeto Estoque para realizar operações de gerenciamento de estoque.
+	A classe Estoque possui uma composição de objetos Produto (vector<Produto>) para armazenar os produtos em estoque.
+
 
 ## Referências: 
 
