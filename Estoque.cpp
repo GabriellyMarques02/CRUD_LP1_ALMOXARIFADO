@@ -125,14 +125,21 @@ void Estoque::removerProduto(const std::string& nome) {
 }
 
 // Função para exibir um relatório do estoque
-void Estoque::exibirRelatorio() const {
+void Estoque::exibirRelatorio(){
+    
+     produtos.clear();
+
+    if (!this->carregarDeArquivo("estoque.csv")) {
+        std::cerr << "Falha ao carregar dados do arquivo." << std::endl;
+        return;
+    }
+
     int totalProdutos = produtos.size();
     double valorTotal = 0.0;
 
     for (const auto& produto : produtos) {
         valorTotal += produto.getPreco();
     }
-
     std::cout << "Relatorio do Estoque:" << std::endl;
     std::cout << "Total de Produtos: " << totalProdutos << std::endl;
     std::cout << "Valor Total: R$" << valorTotal << std::endl;

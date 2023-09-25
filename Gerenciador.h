@@ -10,7 +10,7 @@ public:
     void pesquisarExibirProduto(Estoque& estoque);
     void alterarProduto(Estoque& estoque);
     void removerProduto(Estoque& estoque);
-    void exibirRelatorioEstoque(const Estoque& estoque);
+    void exibirRelatorioEstoque(Estoque& estoque);
     void executar();
 
 private:
@@ -19,4 +19,4 @@ private:
     double lerDouble(const std::string& mensagem) const;
 };
 
-#endif // GERENCIADOR_H
+#endif // GERENCIADOR_H 

@@ -13,7 +13,7 @@ public:
     Produto* pesquisarProduto(const std::string& nome);
     void alterarProduto(const std::string& nome, Produto& novoProduto);
     void removerProduto(const std::string& nome);
-    void exibirRelatorio() const;
+    void exibirRelatorio();
 
     // Funções para salvar e carregar dados de um arquivo
     bool salvarParaArquivo(const std::string& nomeArquivo) const;
@@ -25,4 +25,4 @@ private:
     Produto produtoSalvar;
 };
 
-#endif // ESTOQUE_H
+#endif // ESTOQUE_H 

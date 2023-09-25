@@ -79,7 +79,7 @@ void Gerenciador::removerProduto(Estoque& estoque) {
     estoque.removerProduto(nome);
 }
 
-void Gerenciador::exibirRelatorioEstoque(const Estoque& estoque) {
+void Gerenciador::exibirRelatorioEstoque(Estoque& estoque) {
     estoque.exibirRelatorio();
 }
 
