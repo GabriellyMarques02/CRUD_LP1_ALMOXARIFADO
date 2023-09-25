@@ -56,6 +56,8 @@ Carregar o arquivo automaticamente ao entrar na aplicação. Salvar em arquivo a
 	A classe Gerenciador possui um objeto Estoque para realizar operações de gerenciamento de estoque.
 	A classe Estoque possui uma composição de objetos Produto (vector<Produto>) para armazenar os produtos em estoque.
 
+<br/>
+<br/>
 
 ## Referências: 
 
