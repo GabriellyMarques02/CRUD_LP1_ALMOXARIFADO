@@ -29,12 +29,12 @@ void Gerenciador::adicionarProduto(Estoque& estoque) {
     std::string nome = lerString("Digite o nome do produto: ");
     double preco = lerDouble("Digite o preco do produto: ");
 
+    Produto novoProduto(id, nome, preco);
   
 
-    Produto novoProduto(id, nome, preco);
     
     estoque.adicionarProduto(novoProduto);
-    std::cout << "Produto adicionado com sucesso!" << std::endl;
+    
 }
 
 void Gerenciador::listarProdutos(Estoque& estoque) {

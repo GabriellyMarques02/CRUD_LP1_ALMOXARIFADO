@@ -8,12 +8,30 @@ Estoque::Estoque() {}
 
 // Função para adicionar um produto ao estoque
 void Estoque::adicionarProduto(const Produto& produto) {
+
+    if (!this->carregarDeArquivo("estoque.csv")) {
+        std::cerr << "Falha ao carregar dados do arquivo." << std::endl;
+        return;
+    }
     
     produtoSalvar = produto;
 
+    bool isDuplicado = false;
 
+    for (auto& p : produtos) {
+        if (p.getId() == produto.getId()) {
+           isDuplicado = true;
+            break;
+        }
+    }
+    if (isDuplicado) {
+        std::cerr << "ID de produto duplicado. Nao eh possivel adicionar o produto." << std::endl;
+        return;
+    } else {
+        std::cout << "Produto adicionado com sucesso!" << std::endl;
+    }
 
-    // Salva os dados no arquivo ao finalizar o programa
+    // Salva os dados no arquivo 
     if (!this->salvarParaArquivo("estoque.csv")) {
         std::cerr << "Falha ao salvar dados no arquivo." << std::endl;
         return;
