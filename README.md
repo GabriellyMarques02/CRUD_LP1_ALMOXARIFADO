@@ -64,7 +64,7 @@ Carregar o arquivo automaticamente ao entrar na aplicação. Salvar em arquivo a
 
   	+ Documentação oferecida pelo professor
 
-	https://github.com/heltonricardo/crud-cpp
+	https://creately.com/blog/pt/diagrama/tutorial-diagrama-de-classes/
 
 	https://www.delftstack.com/pt/howto/cpp/read-csv-file-in-cpp/
 
