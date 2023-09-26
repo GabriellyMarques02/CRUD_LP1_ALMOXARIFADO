@@ -30,7 +30,7 @@ Projeto proposto pelo professor Derzu Omaia na disciplina de Linguagem de Progra
 
 4.O objeto principal deve ter pelo menos 4 atributos, entre eles um que seja do tipo de outra classe criada pela equipe (composição). Ex.: Endereço, Data, etc.
 
-5.Utilize pelo menos herança com pelo menos 1 superclasse e 2 subclasses
+5.Utilize pelo menos herança com pelo menos 1 superclasse e 2 subclasses (requisito faltante)
 
 6.Sobrescreva o algum método da superclasse.
 

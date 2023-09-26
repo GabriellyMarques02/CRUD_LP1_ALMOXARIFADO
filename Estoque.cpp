@@ -175,7 +175,9 @@ bool Estoque::carregarDeArquivo(const std::string& nomeArquivo) {
         while (std::getline(ss, valorPorVirgula, ',')) {
             valoresLinhas.push_back(valorPorVirgula);
         }
-
+        if(arquivo.eof()){ 
+            break;
+        }
         Produto produto(std::stoi(valoresLinhas[0]), valoresLinhas[1], std::stod(valoresLinhas[2]));
         produtos.push_back(produto);
 
